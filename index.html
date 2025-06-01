@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seções Cônicas</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <script src="https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+
+    <style>
+        @font-face {
+            font-family: "Computer Modern";
+            src: url("./cmunrm.ttf");
+        }
+
+        :root {
+            --font-size: 16px;
+            --text-color: rgb(241, 236, 226);
+        }
+
+        body {
+            background-color: rgb(21, 21, 21);
+            margin: 0;
+            padding: 15px;
+            color: var(--text-color);
+            font-family: "Computer Modern";
+            font-size: var(--font-size);
+        }
+
+        input[type="number"] {
+            background-color: transparent;
+            color: var(--text-color);
+            font-family: "Computer Modern";
+            border: 0;
+            font-size: var(--font-size);
+            text-align: center;
+            border-radius: 0;
+            width: 100%;
+            padding: 0;
+        }
+
+        input[type="number"]:focus {
+            outline: 0;
+        }
+
+        .frac-input {
+            width: 32px;
+        }
+
+        .frac-input input:nth-child(1) {
+            border-bottom: .6px solid var(--text-color);
+        }
+        #interact {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #eqinput {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #eqinput span {
+            margin-top: -5px;
+        }
+        button {
+            border-radius: 0;
+            border: .5px solid var(--text-color);
+            background-color: transparent;
+            color: var(--text-color);
+            font-family: "Computer Modern";
+            font-size: var(--font-size);
+            margin-top: 20px;
+            width: 80%;
+        }
+        .graph-container {
+            width: 100%;
+            height: 200px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section id="interact">
+            <div id="eqinput">
+                <div class="frac-input">
+                    <input type="number" value="1" id="an">
+                    <input type="number" value="1" id="ad">
+                </div>
+                <span>\( x^2 + \)</span>
+
+                <div class="frac-input">
+                    <input type="number" value="4" id="bn">
+                    <input type="number" value="1" id="bd">
+                </div>
+                <span>\( xy + \)</span>
+
+                <div class="frac-input">
+                    <input type="number" value="4" id="cn">
+                    <input type="number" value="1" id="cd">
+                </div>
+                <span>\( y^2 + \)</span>
+
+                <div class="frac-input">
+                    <input type="number" value="-1" id="dn">
+                    <input type="number" value="1" id="dd">
+                </div>
+                <span>\( x + \)</span>
+
+                <div class="frac-input">
+                    <input type="number" value="1" id="en">
+                    <input type="number" value="1" id="ed">
+                </div>
+                <span>\( y + \)</span>
+
+                <div class="frac-input">
+                    <input type="number" value="-1" id="fn">
+                    <input type="number" value="1" id="fd">
+                </div>
+                <span>\( = 0 \)</span>
+            </div>
+
+            <button id="solve-btn">Resolver</button>
+        </section>
+
+        <section>
+            <div id="graph-container1" class="graph-container"></div>
+    
+            <div class="solution" id="s1"></div>
+
+            <div id="graph-container2" class="graph-container"></div>
+
+            <div class="solution" id="s2"></div>
+
+            <div id="graph-container3" class="graph-container"></div>
+
+            <div class="solution" id="s3"></div>
+        </section>
+    </main>
+
+    <script type="module" src="Racional.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
