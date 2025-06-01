@@ -174,6 +174,11 @@ function updateSolution() {
             Racional.div(v2[1], v2Mag)
         ];
 
+        normalV1[0].simplify();
+        normalV1[1].simplify();
+        normalV2[0].simplify();
+        normalV2[1].simplify();
+
         printTxt(`Normalizando temos \\( D = \\begin{pmatrix} \\overline{v_{\\lambda _1}} \\\\ \\overline{v_{\\lambda _2}}  \\end{pmatrix} =  \\begin{pmatrix} ${normalV1[0].txt()} & ${normalV1[1].txt()} \\\\ ${normalV2[0].txt()} & ${normalV2[1].txt()} \\end{pmatrix} \\)`);
 
         let determinant = Racional.sub(Racional.mult(normalV1[0], normalV2[1]), Racional.mult(normalV1[1], normalV2[0]));
