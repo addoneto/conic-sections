@@ -228,11 +228,11 @@ function updateSolution() {
 
             printTxt(`\\( ${l1.ftxt()}v^2 + ${newD.ftxt()}v = ${l1.ftxt()}v^2 + ${newD.ftxt()}v + (${squareCorrectionV.txt()})^2 - (${squareCorrectionV.txt()})^2 \\)`);
 
-            squareCorrectionV = Racional.div(squareCorrectionV, l1)
+            let insideSquareCorrectionV = Racional.div(squareCorrectionV, l1)
 
-            printTxt(`\\( = ${l1.ftxt()}(v + ${squareCorrectionV.ftxt()})^2 - (${squareCorrectionV.txt()})^2\\)`);
+            printTxt(`\\( = ${l1.ftxt()}(v + ${insideSquareCorrectionV.ftxt()})^2 - (${squareCorrectionV.txt()})^2\\)`);
 
-            printTxt(`Tome \\( s = v + ${squareCorrectionV.ftxt()} \\)`);
+            printTxt(`Tome \\( s = v + ${insideSquareCorrectionV.ftxt()} \\)`);
         }
 
 
@@ -242,11 +242,11 @@ function updateSolution() {
 
             printTxt(`\\( ${l2.ftxt()}w^2 + ${newE.ftxt()}w = ${l2.ftxt()}w^2 + ${newE.ftxt()}v + (${squareCorrectionW.txt()})^2 - (${squareCorrectionW.txt()})^2 \\)`);
 
-            squareCorrectionW = Racional.div(squareCorrectionW, l2)
+            let insideSquareCorrectionW = Racional.div(squareCorrectionW, l2)
 
-            printTxt(`\\( = ${l2.ftxt()}(w + ${squareCorrectionW.ftxt()})^2 - (${squareCorrectionW.txt()})^2\\)`);
+            printTxt(`\\( = ${l2.ftxt()}(w + ${insideSquareCorrectionW.ftxt()})^2 - (${squareCorrectionW.txt()})^2\\)`);
 
-            printTxt(`Tome \\( t = w + ${squareCorrectionW.ftxt()} \\)`);
+            printTxt(`Tome \\( t = w + ${insideSquareCorrectionW.ftxt()} \\)`);
         }
 
         let finalEq = "";
