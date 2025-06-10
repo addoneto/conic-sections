@@ -228,9 +228,10 @@ function updateSolution() {
 
             printTxt(`\\( ${l1.ftxt()}v^2 + ${newD.ftxt()}v = ${l1.ftxt()}v^2 + ${newD.ftxt()}v + (${squareCorrectionV.txt()})^2 - (${squareCorrectionV.txt()})^2 \\)`);
 
-            let insideSquareCorrectionV = Racional.div(squareCorrectionV, l1)
+            let insideSquareCorrectionV = Racional.div(squareCorrectionV, l1);
+            squareCorrectionV = insideSquareCorrectionV;
 
-            printTxt(`\\( = ${l1.ftxt()}(v + ${insideSquareCorrectionV.ftxt()})^2 - (${squareCorrectionV.txt()})^2\\)`);
+            printTxt(`\\( = ${l1.ftxt()}(v + ${insideSquareCorrectionV.ftxt()})^2 - ${l1.ftxt()}(${insideSquareCorrectionV.txt()})^2\\)`);
 
             printTxt(`Tome \\( s = v + ${insideSquareCorrectionV.ftxt()} \\)`);
         }
@@ -242,9 +243,10 @@ function updateSolution() {
 
             printTxt(`\\( ${l2.ftxt()}w^2 + ${newE.ftxt()}w = ${l2.ftxt()}w^2 + ${newE.ftxt()}v + (${squareCorrectionW.txt()})^2 - (${squareCorrectionW.txt()})^2 \\)`);
 
-            let insideSquareCorrectionW = Racional.div(squareCorrectionW, l2)
+            let insideSquareCorrectionW = Racional.div(squareCorrectionW, l2);
+            squareCorrectionW = insideSquareCorrectionW;
 
-            printTxt(`\\( = ${l2.ftxt()}(w + ${insideSquareCorrectionW.ftxt()})^2 - (${squareCorrectionW.txt()})^2\\)`);
+            printTxt(`\\( = ${l2.ftxt()}(w + ${insideSquareCorrectionW.ftxt()})^2 - ${l2.ftxt()}(${insideSquareCorrectionW.txt()})^2\\)`);
 
             printTxt(`Tome \\( t = w + ${insideSquareCorrectionW.ftxt()} \\)`);
         }
@@ -253,10 +255,13 @@ function updateSolution() {
         if (l1.evaluate() !== 0 && l2.evaluate() !== 0) {
             printTxt(`Substituindo:`);
 
-            printTxt(`Temos \\( ${l1.ftxt()}s^2 + ${l2.ftxt()}t^2 - (${squareCorrectionV.txt()})^2 - (${squareCorrectionW.txt()})^2 + ${f.ftxt()} = 0\\)`);
+            printTxt(`Temos \\( ${l1.ftxt()}s^2 + ${l2.ftxt()}t^2 - ${l1.ftxt()}(${squareCorrectionV.txt()})^2 - ${l2.ftxt()}(${squareCorrectionW.txt()})^2 + ${f.ftxt()} = 0\\)`);
 
-            let squareCorrectionVpow2 = Racional.mult(squareCorrectionV, squareCorrectionV);
-            let squareCorrectionWpow2 = Racional.mult(squareCorrectionW, squareCorrectionW);
+            let squareCorrectionVpow2 = Racional.mult(squareCorrectionV, squareCorrectionV); // multiplicar por l1
+            squareCorrectionVpow2 = Racional.mult(squareCorrectionVpow2, l1);
+            let squareCorrectionWpow2 = Racional.mult(squareCorrectionW, squareCorrectionW); // multiplicar por l2
+            squareCorrectionWpow2 = Racional.mult(squareCorrectionWpow2, l2);
+            
             squareCorrectionVpow2 = Racional.mult(squareCorrectionVpow2, new Racional([new RCompound(-1)]));
 
             let indepTermFinal = Racional.sub(squareCorrectionVpow2, squareCorrectionWpow2);
@@ -271,9 +276,10 @@ function updateSolution() {
         } else if (l1.evaluate() !== 0) {
             printTxt(`Substituindo:`);
 
-            printTxt(`Temos \\( ${l1.ftxt()}s^2 + ${newE.ftxt()}t - (${squareCorrectionV.txt()})^2 + ${f.ftxt()} = 0\\)`);
+            printTxt(`Temos \\( ${l1.ftxt()}s^2 + ${newE.ftxt()}t - ${l1.ftxt()}(${squareCorrectionV.txt()})^2 + ${f.ftxt()} = 0\\)`);
 
             let squareCorrectionVpow2 = Racional.mult(squareCorrectionV, squareCorrectionV);
+            squareCorrectionVpow2 = Racional.mult(squareCorrectionVpow2, l1);
             squareCorrectionVpow2 = Racional.mult(squareCorrectionVpow2, new Racional([new RCompound(-1)]));
 
             let indepTermFinal = Racional.sum(squareCorrectionVpow2, f);
@@ -287,9 +293,10 @@ function updateSolution() {
         } else {
             printTxt(`Substituindo:`);
 
-            printTxt(`Temos \\( ${l2.ftxt()}t^2 - ${newD.txt()}s - (${squareCorrectionW.txt()})^2 + ${f.ftxt()} = 0\\)`);
+            printTxt(`Temos \\( ${l2.ftxt()}t^2 - ${newD.txt()}s - ${l2.ftxt()}(${squareCorrectionW.txt()})^2 + ${f.ftxt()} = 0\\)`);
 
             let squareCorrectionWpow2 = Racional.mult(squareCorrectionW, squareCorrectionW);
+            squareCorrectionWpow2 = Racional.mult(squareCorrectionWpow2, l2);
             squareCorrectionWpow2 = Racional.mult(squareCorrectionWpow2, new Racional([new RCompound(-1)]));
 
             let indepTermFinal = Racional.sum(squareCorrectionWpow2, f);
